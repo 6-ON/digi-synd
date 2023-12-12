@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"jsx": "react-jsxdev",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"module": "ESNext",
+		"moduleResolution": "node",
+		"outDir": "dist",
+		"target": "ES6",
+		"sourceMap": true,
+		"allowSyntheticDefaultImports": true,
+	},
+	"include": ["src"]
+}
