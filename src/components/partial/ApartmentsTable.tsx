@@ -1,7 +1,6 @@
 import { Table, Thead, Tr, Th, Tbody, useColorModeValue } from '@chakra-ui/react'
 import ApartmentTableRow from '../tables/ApartmentRow'
 import { TableRowSkelton } from '../skeltons'
-import { TStatus } from '../../store/types'
 
 export function ApartmentsTable({ apartments, status }: { status: TStatus; apartments: TApartment[] }) {
 	const textColor = useColorModeValue('gray.700', 'white')
