@@ -21,4 +21,3 @@ export type ApartmentAction =
 	| { type: ApartmentActionTypes.CHANGE_STATUS; payload: TStatus }
 	| { type: ApartmentActionTypes.CHANGE_MONTH; payload: Month }
 
-export type TStatus = 'idle' | 'loading' | 'failed'
