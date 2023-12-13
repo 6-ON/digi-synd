@@ -1,6 +1,6 @@
 // ---------------------------------------------------- Actions ----------------------------------------------------
 
-import { ApartmentAction, TStatus, ApartmentActionTypes } from '../types'
+import { ApartmentAction, ApartmentActionTypes } from '../types'
 
 export const getApartments = (payload: TApartment[]): ApartmentAction => ({
 	type: ApartmentActionTypes.GET_ALL,
