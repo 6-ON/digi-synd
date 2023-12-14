@@ -15,6 +15,7 @@ module.exports = {
 	entry: {
 		main: './src/index.tsx',
 	},
+	devtool: 'inline-source-map',
 	module: {
 		rules: [
 			{
