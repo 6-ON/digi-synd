@@ -1,11 +1,47 @@
-import { Box, Button, Flex, FormControl, FormLabel, Heading, Input, Text, useColorModeValue } from '@chakra-ui/react'
+import {
+	Box,
+	Button,
+	Flex,
+	FormControl,
+	FormErrorMessage,
+	FormLabel,
+	Heading,
+	Input,
+	InputGroup,
+	InputRightElement,
+	Text,
+	useColorModeValue,
+} from '@chakra-ui/react'
 import WindImage from '../assets/wind.png'
-import { PasswordInput } from '../components/from'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { DevTool } from '@hookform/devtools'
+import { ViewOffIcon, ViewIcon } from '@chakra-ui/icons'
+import { useState } from 'react'
+import { authSchema } from '../schemas/auth'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
+import { login } from '../store/thunks'
 export const Auth = () => {
 	const titleColor = useColorModeValue('teal.300', 'teal.200')
 	const textColor = useColorModeValue('gray.400', 'white')
+	const dispatch = useAppDispatch()
+	const { control, reset, handleSubmit } = useForm<TAuthForm>({
+		resolver: authSchema,
+		defaultValues: {
+			email: '',
+			password: '',
+		},
+	})
+	
+	// password visibility
+	const [show, setShow] = useState(false)
+	const toggleShow = () => setShow(!show)
+
+	const onSubmit: SubmitHandler<TAuthForm> = (data) => {
+		dispatch(login(data))
+	}
 	return (
 		<Flex position="relative" mb="40px">
+			<DevTool control={control} />
 			<Flex
 				h={{ sm: 'initial', md: '75vh', lg: '85vh' }}
 				w="100%"
@@ -15,6 +51,7 @@ export const Auth = () => {
 				mb="30px"
 				pt={{ sm: '100px', md: '0px' }}
 			>
+				{}
 				<Flex
 					alignItems="center"
 					justifyContent="start"
@@ -34,23 +71,58 @@ export const Auth = () => {
 						<Text mb="36px" ms="4px" color={textColor} fontWeight="bold" fontSize="14px">
 							Enter your email and password to sign in
 						</Text>
-						<FormControl>
-							<FormLabel ms="4px" fontSize="sm" fontWeight="normal">
-								Email
-							</FormLabel>
-							<Input
-								borderRadius="15px"
-								mb="24px"
-								fontSize="sm"
-								type="text"
-								placeholder="Your email adress"
-								size="lg"
+						<Box>
+							<Controller
+								render={({ field, fieldState: { invalid, error } }) => (
+									<FormControl isInvalid={invalid} mb="24px">
+										<FormLabel ms="4px" fontSize="sm" fontWeight="normal">
+											Email
+										</FormLabel>
+
+										<Input
+											borderRadius="15px"
+											fontSize="sm"
+											type="text"
+											placeholder="Your email adress"
+											size="lg"
+											{...field}
+										/>
+										<FormErrorMessage ms="3">{error?.message}</FormErrorMessage>
+									</FormControl>
+								)}
+								control={control}
+								name="email"
 							/>
-							<FormLabel ms="4px" fontSize="sm" fontWeight="normal">
-								Password
-							</FormLabel>
-							<PasswordInput/>
-						</FormControl>
+							<Controller
+								render={({ field, fieldState: { invalid, error } }) => (
+									<FormControl isInvalid={invalid} mb="24px">
+										<FormLabel ms="4px" fontSize="sm" fontWeight="normal">
+											Password
+										</FormLabel>
+										<InputGroup size="md">
+											<Input
+												// pr="4.5rem"
+												fontSize="sm"
+												ms="4px"
+												borderRadius="15px"
+												size="lg"
+												type={show ? 'text' : 'password'}
+												placeholder="Enter password"
+												{...field}
+											/>
+											<InputRightElement pr="1rem">
+												<Button size="sm" onClick={toggleShow}>
+													{show ? <ViewOffIcon /> : <ViewIcon />}
+												</Button>
+											</InputRightElement>
+										</InputGroup>
+										<FormErrorMessage ms="2">{error?.message}</FormErrorMessage>
+									</FormControl>
+								)}
+								control={control}
+								name="password"
+							/>
+						</Box>
 						<Button
 							fontSize="10px"
 							type="submit"
@@ -60,6 +132,7 @@ export const Auth = () => {
 							mb="20px"
 							color="white"
 							mt="20px"
+							onClick={handleSubmit(onSubmit)}
 							_hover={{
 								bg: 'teal.200',
 							}}
@@ -93,4 +166,3 @@ export const Auth = () => {
 		</Flex>
 	)
 }
-
