@@ -1,5 +1,5 @@
 export const current_month = () => ({
-	y: +new Date().getFullYear().toString().slice(-2),
+	y: +new Date().getFullYear(),
 	m: new Date().getMonth() + 1,
 })
 
