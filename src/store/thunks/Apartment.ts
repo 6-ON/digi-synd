@@ -48,7 +48,7 @@ export const addApartmentThunk = (apartment: TApartmentForm) => async (dispatch:
 		const result = await ApartmentsService.create(apartment)
 		dispatch(addApartment(result))
 	} catch (err) {
-		toast({ title: err.message, status: 'error' })
+		toast({ title: err.message,description:err.constraints[0], status: 'error' })
 	}
 }
 export const updateApartmentThunk =
