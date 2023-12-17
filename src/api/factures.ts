@@ -6,7 +6,7 @@ class ApiService {
 		return data
 	}
 	public async create(apartmentId: string, month: Month) {
-		const { data } = await mainInstance.post<TFactureRecord>('/factures', { apartmentId, month })
+		const { data } = await mainInstance.post<TFactureRecord>(`/factures/${apartmentId}`, { ...month })
 		return data
 	}
 }
