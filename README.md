@@ -10,7 +10,6 @@ DigiSynd is a comprehensive solution crafted for web agencies, offering a simpli
     - [Prerequisites](#prerequisites)
     - [Instructions](#instructions)
 -   [Usage](#usage)
--   [License](#license)
 
 ## Features
 - **Payment Management:** Simplify the handling of monthly payments for union dues.
