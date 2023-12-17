@@ -44,16 +44,14 @@ export const ApartmentModal: FC = () => {
 
 	useEffect(() => {
 		console.log(apartment)
-		console.log(isDirty)
-		console.log(isValid)
 		if (apartment) {
 			const {
 				floor,
 				number,
 				owner: { name, phone },
 			} = apartment
-			reset({ floor: floor, number: number, owner: { name, phone } },{keepDefaultValues:true})
-		} else reset(emptyForm,{keepDefaultValues:false,})
+			reset({ floor: floor, number: number, owner: { name, phone } })
+		} else reset(emptyForm)
 	}, [isOpen,apartment])
 	const dispatch = useAppDispatch()
 	const onSubmit: SubmitHandler<TApartmentForm> = (data) => {
@@ -63,6 +61,8 @@ export const ApartmentModal: FC = () => {
 				reset(emptyForm,{keepDefaultValues:false})
 				return onClose()
 			case 'edit':
+				console.log(dirtyFields);
+				
 				dispatch<any>(updateApartmentThunk(apartment._id, dirtyValues(data, dirtyFields)))
 				reset(emptyForm,{keepDefaultValues:false})
 				return onClose()
