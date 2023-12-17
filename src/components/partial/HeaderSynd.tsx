@@ -1,11 +1,15 @@
 import { Flex, Button, Text, Box } from '@chakra-ui/react'
 import { LogoIcon } from '../icons'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAppDispatch } from '../../store/hooks'
+import { logout } from '../../store/thunks'
 
 
 
-export const HeaderAuth = () => {
+export const HeaderSyndic = () => {
+	const dispatch = useAppDispatch()
+	const navigate = useNavigate()
 	return (
 		<Flex
 			position="fixed"
@@ -37,6 +41,7 @@ export const HeaderAuth = () => {
 				</Box>
 				</Link>
 				<Button
+					onClick={() => dispatch(logout(navigate))}
 					rightIcon={<ArrowForwardIcon />}
 					ml="auto"
 					borderRadius="15px"
