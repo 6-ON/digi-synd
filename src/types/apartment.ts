@@ -7,7 +7,7 @@ type TApartment = {
 	}
 	floor: number
 	number: number
-	status: string
+	isPayed: boolean
 	payedMonths: string
 	createdAt: string
 	updatedAt: string

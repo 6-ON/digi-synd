@@ -8,7 +8,7 @@ type ApartmentTableRowProps = {
 	apartment: TApartment
 }
 const ApartmentTableRow: React.FC<ApartmentTableRowProps> = ({ apartment }) => {
-	const { _id, floor, number, owner, payedMonths, status } = apartment
+	const { _id, floor, number, owner, payedMonths, isPayed } = apartment
 	const textColor = useColorModeValue('gray.700', 'white')
 	const bgStatus = useColorModeValue('gray.400', '#1a202c')
 	const colorStatus = useColorModeValue('white', 'gray.400')
@@ -41,14 +41,14 @@ const ApartmentTableRow: React.FC<ApartmentTableRowProps> = ({ apartment }) => {
 			</Td>
 			<Td>
 				<Badge
-					bg={status === 'payed' ? 'green.400' : bgStatus}
-					color={status === 'payed' ? 'white' : colorStatus}
+					bg={isPayed ? 'green.400' : bgStatus}
+					color={isPayed ? 'white' : colorStatus}
 					fontSize="sm"
 					p="3px 10px"
 					textTransform="uppercase"
 					borderRadius="8px"
 				>
-					{status === 'payed' ? 'payé' : 'non '}
+					{isPayed ? 'payé' : 'non '}
 				</Badge>
 			</Td>
 			<Td>
