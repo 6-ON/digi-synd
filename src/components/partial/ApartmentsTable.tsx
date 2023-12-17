@@ -1,8 +1,11 @@
 import { Table, Thead, Tr, Th, Tbody, useColorModeValue } from '@chakra-ui/react'
 import ApartmentTableRow from '../tables/ApartmentRow'
 import { TableRowSkelton } from '../skeltons'
+import { useAppSelector } from '../../store/hooks'
 
-export function ApartmentsTable({ apartments, status }: { status: TStatus; apartments: TApartment[] }) {
+export function ApartmentsTable() {
+	const { status, apartments } = useAppSelector((state) => state.apartment)
+
 	const textColor = useColorModeValue('gray.700', 'white')
 	const isLoading = status === 'loading'
 	const captions = ['Owner', 'N°', 'Etage', 'Status', 'Mois Payé']

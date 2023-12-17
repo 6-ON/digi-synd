@@ -1,11 +1,11 @@
 import { Card, CardBody, CardHeader, Flex, Text, useColorModeValue } from '@chakra-ui/react'
 import FactureRow from '../tables/FactureRow'
 import { FC } from 'react'
+import { useAppSelector } from '../../store/hooks'
 
-type RecentFacturesProps = {
-	factures: TFactureRecord[]
-}
-export const RecentFactures: FC<RecentFacturesProps> = ({ factures }) => {
+export const RecentFactures: FC = () => {
+	const factures = useAppSelector((state) => state.factures.recentFactures)
+
 	const textColor = useColorModeValue('gray.700', 'white')
 	return (
 		<Card w="xl">

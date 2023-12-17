@@ -11,8 +11,6 @@ import { apartmentsByMonthThunk, getFacturesThunk } from '../store/thunks'
 import { AddApartmentBtn } from '../components/hoc'
 // -------------------
 export const DashboardPage = () => {
-	const { status, apartments } = useAppSelector((state) => state.apartment)
-	const factures = useAppSelector((state) => state.factures.recentFactures)
 	const dispatch = useAppDispatch()
 
 	const textColor = useColorModeValue('gray.700', 'white')
@@ -46,12 +44,12 @@ export const DashboardPage = () => {
 				</CardHeader>
 				<CardBody>
 					<Box h="md" overflowY="auto">
-						<ApartmentsTable status={status} apartments={apartments} />
+						<ApartmentsTable />
 					</Box>
 				</CardBody>
 			</Card>
 			<HStack justify="center" mt="2">
-				<RecentFactures factures={factures} />
+				<RecentFactures />
 			</HStack>
 		</Container>
 	)
