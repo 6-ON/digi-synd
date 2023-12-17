@@ -20,7 +20,9 @@ import { useState } from 'react'
 import { authSchema } from '../schemas/auth'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { login } from '../store/thunks'
+import { useNavigate } from 'react-router-dom'
 export const Auth = () => {
+	const navigate = useNavigate()
 	const titleColor = useColorModeValue('teal.300', 'teal.200')
 	const textColor = useColorModeValue('gray.400', 'white')
 	const dispatch = useAppDispatch()
@@ -31,13 +33,13 @@ export const Auth = () => {
 			password: '',
 		},
 	})
-	
+
 	// password visibility
 	const [show, setShow] = useState(false)
 	const toggleShow = () => setShow(!show)
 
 	const onSubmit: SubmitHandler<TAuthForm> = (data) => {
-		dispatch(login(data))
+		dispatch(login(data, navigate))
 	}
 	return (
 		<Flex position="relative" mb="40px">

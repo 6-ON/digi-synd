@@ -1,13 +1,13 @@
 import { Flex, Box, Text, useColorModeValue } from '@chakra-ui/react'
 import WindSignup from '../assets/wind-sign-up.png'
-import { HeaderAuth } from '../components/partial'
+import { HeaderSyndic } from '../components/partial'
 import { SyndicateForm } from '../components/forms'
 
 export const Syndicate = () => {
 	const bgColor = useColorModeValue('white', 'gray.700')
 	return (
 		<>
-			<HeaderAuth />
+			<HeaderSyndic />
 			<Flex direction="column" alignSelf="center" justifySelf="center" overflow="hidden">
 				<Box
 					position="absolute"
