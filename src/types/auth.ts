@@ -3,6 +3,7 @@ type TUser = {
 	name: string
 	email: string
 	image?: string
+	role: "admin" | "syndicate"
 	createdAt: string
 	updatedAt: string
 }
