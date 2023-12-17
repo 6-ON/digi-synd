@@ -1,13 +1,11 @@
 // ---------------------------------------------------- Thunk Facture ----------------------------------------------------
 
-import { Dispatch } from 'redux'
-import { FactureAction } from '../types'
 import { FactureService } from '../../api'
-import { createFacture, getFactures } from '../actions'
-import { GetRootState } from '../store'
+import { createFacture, getFactures, updateApartment } from '../actions'
+import { AppDispatch, GetRootState } from '../store'
 import { toast } from '../../utils/toast'
 
-export const getFacturesThunk = () => async (dispatch: Dispatch<FactureAction>) => {
+export const getFacturesThunk = () => async (dispatch: AppDispatch) => {
 	try {
 		const result = await FactureService.getRecent()
 		dispatch(getFactures(result))
@@ -17,12 +15,12 @@ export const getFacturesThunk = () => async (dispatch: Dispatch<FactureAction>) 
 }
 
 export const createFactureThunk =
-	(apartmentId: string) => async (dispatch: Dispatch<FactureAction>, getState: GetRootState) => {
+	(apartmentId: string) => async (dispatch: AppDispatch, getState: GetRootState) => {
 		try {
 			const month = getState().apartment.selectedMonth
-			console.log(month, apartmentId)
-			// const result = await FactureService.create()
-			// dispatch(createFacture(result))
+			const result = await FactureService.create(apartmentId,month)
+			dispatch(updateApartment(apartmentId, { isPayed :true }))
+			dispatch(createFacture(result))
 		} catch (err) {
 			toast({ title: err.message, status: 'error' })
 		}
