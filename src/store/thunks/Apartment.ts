@@ -19,8 +19,6 @@ export const getApartmentsThunk = () => async (dispatch: AppDispatch) => {
 export const apartmentsByMonthThunk = (m: Month) => async (dispatch: AppDispatch) => {
 	try {
 		batch(() => {
-			console.log(m)
-
 			dispatch(changeMonth(m)) // change month in store to use it for payments
 			dispatch(changeStatus('loading'))
 		})

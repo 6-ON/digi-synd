@@ -20,9 +20,7 @@ export const getUser = () => async (dispatch: AppDispatch) => {
 	try {
 		const result = await AuthService.me()
 		dispatch(setUser(result))
-	} catch (error) {
-		console.log(error);
-		
+	} catch (error) {		
 		toast({ title: error.message, status: 'error' })
 	}
 }

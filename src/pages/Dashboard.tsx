@@ -21,9 +21,6 @@ export const DashboardPage = () => {
 	useEffect(() => {
 		dispatch(getFacturesThunk())
 	}, [])
-	useEffect(() => {
-		console.log('DashboardPage render')
-	})
 	return (
 		<Container maxW="unset">
 			<Header />

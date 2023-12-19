@@ -43,7 +43,6 @@ export const ApartmentModal: FC = () => {
 	})
 
 	useEffect(() => {
-		console.log(apartment)
 		if (apartment) {
 			const {
 				floor,
@@ -61,8 +60,6 @@ export const ApartmentModal: FC = () => {
 				reset(emptyForm,{keepDefaultValues:false})
 				return onClose()
 			case 'edit':
-				console.log(dirtyFields);
-				
 				dispatch<any>(updateApartmentThunk(apartment._id, dirtyValues(data, dirtyFields)))
 				reset(emptyForm,{keepDefaultValues:false})
 				return onClose()
