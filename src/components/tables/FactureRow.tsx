@@ -7,8 +7,6 @@ type FactureRowProps = {
 	facture: TFactureRecord
 }
 const FactureRow: FC<FactureRowProps> = ({ facture }) => {
-	console.log(facture)
-
 	return (
 		<Box bg="gray.50" rounded={10} px="6" py="8" mb={10}>
 			<Flex justify="space-between">
@@ -17,7 +15,7 @@ const FactureRow: FC<FactureRowProps> = ({ facture }) => {
 						{facture.apartment.owner.name}
 					</Text>
 					<Text>Facture ID : {facture._id}</Text>
-					<Text>Mois : {new Date(facture.month).toLocaleString().slice(3, 10)}</Text>
+					<Text>Mois : {new Date(facture.month).toLocaleString('fr').slice(3, 10)}</Text>
 					<Text>Creé en : {new Date(facture.createdAt).toLocaleDateString()}</Text>
 				</VStack>
 				<PDFDownloadLink document={<FacturePDF facture={facture} />} fileName={`${facture._id}.pdf`}>
