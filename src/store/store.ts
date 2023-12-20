@@ -4,6 +4,8 @@ import { thunk } from 'redux-thunk'
 import { composeWithDevTools } from '@redux-devtools/extension'
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
+export type AppStore = typeof store
+
 export type GetRootState = typeof store.getState
 
 export type RootState = ReturnType<GetRootState>
