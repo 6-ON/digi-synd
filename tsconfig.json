@@ -6,8 +6,9 @@
 		"moduleResolution": "node",
 		"outDir": "dist",
 		"target": "ES6",
+		"rootDir": ".",
 		"sourceMap": true,
 		"allowSyntheticDefaultImports": true,
 	},
-	"include": ["src"]
+	"include": ["src", "tests"]
 }
