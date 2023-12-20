@@ -3,21 +3,21 @@ import React, { FC } from 'react'
 type FacturePDFProps = {
 	facture: TFactureRecord
 }
-const styles = StyleSheet.create({
-	page: {
-		backgroundColor: '#E4E4E4',
-	},
-	section: {
-		margin: 10,
-		padding: 10,
-	},
-	heading: {
-		fontSize: 24,
-		textAlign: 'center',
-		marginBottom: 20,
-	},
-})
 export const FacturePDF: FC<FacturePDFProps> = ({ facture }) => {
+	const styles = StyleSheet.create({
+		page: {
+			backgroundColor: '#E4E4E4',
+		},
+		section: {
+			margin: 10,
+			padding: 10,
+		},
+		heading: {
+			fontSize: 24,
+			textAlign: 'center',
+			marginBottom: 20,
+		},
+	})
 	return (
 		<Document>
 			<Page size={'A4'} style={styles.page}>
