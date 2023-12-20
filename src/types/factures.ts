@@ -3,5 +3,4 @@ type TFactureRecord = {
 	apartment: Pick<TApartment, '_id' | 'owner'>
 	createdAt: string
 	month:string
-	pdf: string
 }
